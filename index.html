@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jireh Ochygole Samuel · Full-stack developer (JavaScript, Python)</title>
+<meta name="description" content="Jireh Ochygole Samuel builds practical, secure software with JavaScript, Python and Go. Selected work: Lighthouse Hunter, CampusFlow, Emergency Resource Map, Cyber Threat Detection AI.">
+<meta property="og:title" content="Jireh Ochygole Samuel · Full-stack developer">
+<meta property="og:description" content="Practical, secure software in JavaScript, Python and Go. Games, APIs, auth and engineering that holds up under tests.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#070a09">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23070a09'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='46' font-weight='700' fill='%235cf2a8' text-anchor='middle'%3ESJ%3C/text%3E%3C/svg%3E">
+<!--
+  Single-file portfolio. To publish: create the repo Jireh7521.github.io, commit this file as
+  index.html, then Settings > Pages > Deploy from a branch > main > / (root).
+  To add contact links, edit CONFIG at the bottom of this file: email and linkedin.
+-->
+<style>
+  :root{
+    --ink:#070a09;
+    --ink-soft:#0b100e;
+    --card:rgba(255,255,255,.035);
+    --card-hover:rgba(255,255,255,.06);
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --text:#e9f1ed;
+    --muted:#93a49c;
+    --mint:#5cf2a8;
+    --amber:#ffb457;
+    --sky:#7aa7ff;
+    --shadow:0 24px 60px -30px rgba(0,0,0,.9);
+    --radius:18px;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  html[data-theme="light"]{
+    --ink:#f5f3ee;
+    --ink-soft:#efece4;
+    --card:rgba(12,20,17,.035);
+    --card-hover:rgba(12,20,17,.06);
+    --line:rgba(12,20,17,.12);
+    --line-strong:rgba(12,20,17,.24);
+    --text:#101815;
+    --muted:#5b6b64;
+    --mint:#0b8a55;
+    --amber:#a2660a;
+    --sky:#2f5bd0;
+    --shadow:0 24px 50px -34px rgba(20,40,30,.45);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:86px}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(820px 520px at 82% -8%, rgba(92,242,168,.16), transparent 62%),
+      radial-gradient(700px 480px at 6% 12%, rgba(122,167,255,.12), transparent 60%),
+      radial-gradient(900px 700px at 50% 108%, rgba(255,180,87,.10), transparent 65%);
+  }
+  html[data-theme="light"] body::before{
+    background:
+      radial-gradient(820px 520px at 82% -8%, rgba(11,138,85,.13), transparent 62%),
+      radial-gradient(700px 480px at 6% 12%, rgba(47,91,208,.10), transparent 60%),
+      radial-gradient(900px 700px at 50% 108%, rgba(162,102,10,.10), transparent 65%);
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{max-width:100%}
+  ::selection{background:var(--mint);color:#04120c}
+  :focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px}
+  .wrap{width:min(1120px,calc(100% - 44px));margin-inline:auto}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px) saturate(140%);
+    background:color-mix(in srgb, var(--ink) 78%, transparent);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  .nav.stuck{border-bottom-color:var(--line)}
+  .nav-in{display:flex;align-items:center;gap:18px;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:-.01em}
+  .brand-mark{
+    width:32px;height:32px;border-radius:9px;display:grid;place-items:center;
+    font-family:var(--mono);font-size:13px;font-weight:700;
+    background:linear-gradient(150deg,rgba(92,242,168,.22),rgba(122,167,255,.16));
+    border:1px solid var(--line-strong);color:var(--mint);
+  }
+  .nav-links{display:flex;gap:4px;margin-left:auto}
+  .nav-links a{
+    font-size:14px;color:var(--muted);padding:8px 12px;border-radius:9px;
+    transition:color .2s ease,background .2s ease;
+  }
+  .nav-links a:hover{color:var(--text);background:var(--card)}
+  .nav-links a.active{color:var(--text)}
+  .nav-links a.active::after{content:"";display:block;height:2px;margin-top:5px;border-radius:2px;background:var(--mint)}
+  .nav-actions{display:flex;align-items:center;gap:8px}
+  .icon-btn{
+    width:36px;height:36px;display:grid;place-items:center;cursor:pointer;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--text);
+    transition:transform .2s ease,background .2s ease,border-color .2s ease;
+  }
+  .icon-btn:hover{background:var(--card-hover);border-color:var(--line-strong);transform:translateY(-1px)}
+  .icon-btn svg{width:16px;height:16px}
+  html[data-theme="dark"] .sun{display:none}
+  html[data-theme="light"] .moon{display:none}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:12px 18px;border-radius:11px;font-size:14px;font-weight:500;
+    border:1px solid var(--line);background:var(--card);color:var(--text);
+    transition:transform .2s ease,background .2s ease,border-color .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);background:var(--card-hover);border-color:var(--line-strong)}
+  .btn-primary{
+    background:linear-gradient(140deg,var(--mint),#37d68f);
+    color:#04150d;border-color:transparent;font-weight:600;
+    box-shadow:0 12px 30px -14px rgba(92,242,168,.7);
+  }
+  html[data-theme="light"] .btn-primary{color:#f7fffb}
+  .btn-primary:hover{background:linear-gradient(140deg,#6ffcb6,#3fe39a)}
+  .btn-sm{padding:9px 14px;font-size:13px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 44px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center}
+  .pill{
+    display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;
+    padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);
+    color:var(--muted);letter-spacing:.01em;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(92,242,168,.16);animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 7px rgba(92,242,168,0)}}
+  h1{
+    font-size:clamp(2.5rem,6vw,4.2rem);line-height:1.0;letter-spacing:-.035em;
+    margin:22px 0 0;font-weight:700;
+  }
+  h1 .grad{
+    background:linear-gradient(100deg,var(--mint) 8%,var(--sky) 52%,var(--amber) 96%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .role{
+    margin:20px 0 0;font-size:clamp(1.05rem,1.9vw,1.3rem);color:var(--text);
+    font-weight:500;letter-spacing:-.01em;
+  }
+  .role span{color:var(--muted);font-weight:400}
+  .lede{margin:16px 0 0;color:var(--muted);font-size:16px;max-width:50ch}
+  .lede strong{color:var(--text);font-weight:500}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .hero-meta b{display:block;color:var(--text);font-family:var(--sans);font-size:15px;font-weight:500;margin-top:3px}
+
+  /* terminal */
+  .term{
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    background:linear-gradient(170deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+    box-shadow:var(--shadow);
+  }
+  html[data-theme="light"] .term{background:#0c1411;border-color:#1c2a24}
+  .term-bar{
+    display:flex;align-items:center;gap:7px;padding:11px 14px;
+    border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);
+    font-family:var(--mono);font-size:11.5px;color:#84948d;letter-spacing:.04em;
+  }
+  .term-bar i{width:10px;height:10px;border-radius:50%;display:block;background:#2c3a34}
+  .term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+  .term-bar span{margin-left:8px}
+  .term-body{padding:20px 18px;font-family:var(--mono);font-size:12.9px;line-height:1.85;color:#d7e4dd}
+  .term-body p{margin:0 0 4px}
+  .p1{color:#5cf2a8}
+  .p2{color:#84948d}
+  .p3{color:#ffb457}
+  .p4{color:#9db8e8}
+  .caret{display:inline-block;width:7px;height:14px;background:#5cf2a8;vertical-align:-2px;animation:blink 1.15s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .term-foot{padding:13px 18px;border-top:1px solid rgba(255,255,255,.07);font-family:var(--mono);font-size:11.5px;color:#7c8d86;display:flex;justify-content:space-between}
+
+  /* ---------- sections ---------- */
+  section{padding:76px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+  .eyebrow{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--mint);display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--mint);opacity:.6}
+  h2{font-size:clamp(1.6rem,3.4vw,2.3rem);letter-spacing:-.03em;margin:12px 0 0;line-height:1.12;font-weight:600}
+  .sec-sub{color:var(--muted);font-size:15px;max-width:56ch;margin:10px 0 0}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:start}
+  .about-copy p{color:var(--muted);font-size:15.5px;margin:0 0 15px}
+  .about-copy p strong{color:var(--text);font-weight:500}
+  .about-copy p:last-child{margin-bottom:0}
+  .facts{display:grid;gap:12px}
+  .fact{
+    border:1px solid var(--line);background:var(--card);border-radius:14px;padding:14px 16px;
+  }
+  .fact dt{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .fact dd{margin:5px 0 0;font-size:14.5px}
+
+  /* work */
+  .filters{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-family:var(--mono);font-size:12px;cursor:pointer;padding:8px 14px;border-radius:999px;
+    background:transparent;color:var(--muted);border:1px solid var(--line);
+    transition:all .2s ease;
+  }
+  .chip:hover{color:var(--text);border-color:var(--line-strong)}
+  .chip[aria-pressed="true"]{background:var(--text);color:var(--ink);border-color:var(--text);font-weight:500}
+  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .card{
+    position:relative;display:flex;flex-direction:column;
+    border:1px solid var(--line);border-radius:var(--radius);padding:26px 26px 22px;
+    background:var(--card);overflow:hidden;
+    transition:transform .3s ease,border-color .3s ease,background .3s ease;
+  }
+  .card::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s ease;
+    background:radial-gradient(420px 220px at 12% 0%, rgba(92,242,168,.12), transparent 70%);
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--line-strong);background:var(--card-hover)}
+  .card:hover::after{opacity:1}
+  .card-top{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em}
+  .lang{display:inline-flex;align-items:center;gap:6px}
+  .lang::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--amber)}
+  .lang[data-lang="js"]::before{background:#f1e05a}
+  .lang[data-lang="py"]::before{background:#5cf2a8}
+  .lang[data-lang="go"]::before{background:#7ad7ff}
+  .card h3{margin:14px 0 0;font-size:1.28rem;letter-spacing:-.02em;font-weight:600}
+  .card .blurb{color:var(--muted);font-size:14.5px;margin:9px 0 0}
+  .points{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+  .points li{position:relative;padding-left:19px;font-size:13.6px;color:var(--muted)}
+  .points li::before{
+    content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:2px;
+    background:linear-gradient(135deg,var(--mint),var(--sky));opacity:.85;
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0}
+  .tag{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+  .card-links{display:flex;gap:8px;margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .link{
+    display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text);
+    padding:7px 11px;border-radius:8px;border:1px solid transparent;transition:all .2s ease;
+  }
+  .link:hover{background:var(--card-hover);border-color:var(--line)}
+  .link.muted{color:var(--muted);font-weight:400}
+  .link svg{width:13px;height:13px;opacity:.8}
+  .card.is-hidden{display:none}
+  .work-note{margin-top:22px;color:var(--muted);font-size:14px}
+  .work-note a{color:var(--text);border-bottom:1px solid var(--line-strong)}
+
+  /* stack */
+  .stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);padding:24px}
+  .panel h3{margin:0 0 4px;font-size:15px;font-weight:600;letter-spacing:-.01em}
+  .panel .hint{margin:0 0 16px;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+  .rows{display:grid;gap:2px}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:0}
+  .row span{font-size:14px}
+  .level{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
+  .level::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint)}
+  .level.working::before{background:var(--sky)}
+  .level.learning::before{background:var(--amber)}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+
+  /* ai */
+  .ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+  .quote{
+    border-left:2px solid var(--mint);padding:6px 0 6px 20px;margin:0;
+    font-size:clamp(1.15rem,2.3vw,1.5rem);line-height:1.45;letter-spacing:-.02em;
+  }
+  .quote cite{display:block;margin-top:14px;font-style:normal;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .checks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .checks li{display:grid;grid-template-columns:26px 1fr;gap:12px;font-size:14.5px;color:var(--muted)}
+  .checks b{color:var(--text);font-weight:500;display:block;margin-bottom:1px}
+  .checks .num{
+    font-family:var(--mono);font-size:12px;color:var(--mint);
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+    border:1px solid var(--line);background:var(--card);
+  }
+
+  /* path */
+  .timeline{position:relative;display:grid;gap:0;margin-top:8px}
+  .step{position:relative;display:grid;grid-template-columns:130px 1fr;gap:28px;padding:20px 0}
+  .step::before{
+    content:"";position:absolute;left:158px;top:0;bottom:0;width:1px;
+    background:var(--line);opacity:.9;
+  }
+  .step:first-child::before{top:33px}
+  .step:last-child::before{bottom:calc(100% - 33px)}
+  .step time{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px;text-align:right;padding-right:2px}
+  .step-body{position:relative;padding-left:26px}
+  .step-body::before{
+    content:"";position:absolute;left:-5px;top:8px;width:11px;height:11px;border-radius:50%;
+    background:var(--ink);border:1.5px solid var(--line-strong);
+  }
+  .step.now .step-body::before{background:var(--mint);border-color:var(--mint);box-shadow:0 0 0 4px rgba(92,242,168,.18)}
+  .step h3{margin:0;font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+  .step p{margin:5px 0 0;color:var(--muted);font-size:14px}
+
+  /* contact */
+  .contact{border:1px solid var(--line);border-radius:26px;padding:clamp(30px,5vw,56px);background:var(--card);position:relative;overflow:hidden}
+  .contact::before{
+    content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle,rgba(92,242,168,.18),transparent 68%);pointer-events:none;
+  }
+  .contact h2{font-size:clamp(1.9rem,4.6vw,3rem);max-width:20ch}
+  .contact p{color:var(--muted);max-width:52ch;margin:14px 0 28px;font-size:15.5px}
+  .contact-actions{display:flex;flex-wrap:wrap;gap:12px}
+  footer{border-top:1px solid var(--line);margin-top:70px;padding:26px 0 40px}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+  .foot a:hover{color:var(--text)}
+
+  .reveal{opacity:0;transform:translateY(16px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal,.reveal.in{opacity:1;transform:none;transition:none}
+    .dot,.caret{animation:none}
+    .card:hover,.btn:hover,.icon-btn:hover{transform:none}
+  }
+
+  @media (max-width:940px){
+    .hero-grid,.about-grid,.ai-grid{grid-template-columns:1fr}
+    .hero{padding-top:44px}
+    .term{order:-1}
+    .work-grid{grid-template-columns:1fr}
+    .nav-in{flex-wrap:wrap;height:auto;padding:10px 0 6px;row-gap:4px}
+    .nav-links{order:4;width:100%;margin-left:0;gap:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+    .nav-links::-webkit-scrollbar{display:none}
+    .nav-links a{padding:6px 9px;font-size:13px;white-space:nowrap}
+    .nav-links a.active::after{margin-top:3px}
+    .nav-actions{margin-left:auto}
+    html{scroll-padding-top:112px}
+    .step{grid-template-columns:96px 1fr;gap:18px}
+    .step::before{left:114px}
+  }
+  @media (max-width:640px){
+    .stack-grid{grid-template-columns:1fr}
+    .hero-meta{gap:16px}
+    section{padding:58px 0}
+    .card{padding:22px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark">SJ</span>
+      <span>Samuel Jireh</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#ai">AI use</a>
+      <a href="#path">Path</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="https://github.com/Jireh7521" target="_blank" rel="noopener">GitHub
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><span class="dot"></span>Open to internships and junior roles</span>
+        <h1>I build software<br><span class="grad">that holds up.</span></h1>
+        <p class="role">Full-stack developer <span>· JavaScript, Python, Go</span></p>
+        <p class="lede">I am <strong>Jireh Ochygole Samuel</strong>, a developer working mostly in the browser and on the server. I care about
+          authentication done properly, APIs that fail cleanly, and games that run offline on a phone.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#work">See the work</a>
+          <a class="btn" href="https://jireh7521.github.io/lighthouse-game/" target="_blank" rel="noopener">Play Lighthouse Hunter
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="btn" id="heroEmail" href="mailto:" hidden>Email me</a>
+        </div>
+        <div class="hero-meta">
+          <div>FOCUS<b>Full-stack &amp; security</b></div>
+          <div>BASED IN<b>Nigeria · remote</b></div>
+          <div>CODING SINCE<b>2025</b></div>
+        </div>
+      </div>
+
+      <div class="term" aria-hidden="true">
+        <div class="term-bar"><i></i><i></i><i></i><span>samuel@dev ~ %</span></div>
+        <div class="term-body">
+          <p><span class="p1">$</span> whoami</p>
+          <p class="p4">samuel o. jireh, full-stack developer</p>
+          <p><span class="p1">$</span> stack --primary</p>
+          <p class="p4">javascript · python · html/css</p>
+          <p><span class="p1">$</span> stack --working-on</p>
+          <p class="p4">go · fastapi · postgres · typescript</p>
+          <p><span class="p1">$</span> status</p>
+          <p class="p3">shipping small, tested, secure things</p>
+          <p><span class="p1">$</span> <span class="caret"></span></p>
+        </div>
+        <div class="term-foot"><span>41 tests green</span><span>offline ready</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow">01 / Selected work</p>
+          <h2>Things I have shipped, not just started.</h2>
+          <p class="sec-sub">Six projects that show how I work: a game that installs like an app, a helpdesk with real
+            auth, a mapped directory, and an AI tool built with the key kept on the server.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter projects by language">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-filter="js" aria-pressed="false">JavaScript</button>
+          <button class="chip" type="button" data-filter="py" aria-pressed="false">Python</button>
+        </div>
+      </div>
+
+      <div class="work-grid" id="workGrid">
+
+        <article class="card reveal" data-tech="js">
+          <div class="card-top"><span class="lang" data-lang="js">JavaScript</span><span>·</span><span>solo build</span></div>
+          <h3>Lighthouse Hunter</h3>
+          <p class="blurb">A five-zone side-scrolling adventure, written without a framework: canvas rendering,
+            hand-painted backdrops, checkpoint saves and a global leaderboard.</p>
+          <ul class="points">
+            <li>A 41-test harness plus CI that fails the build on any drift between source and published files.</li>
+            <li>Installable PWA: a hashed service worker precaches all 33 assets so it opens and plays offline.</li>
+            <li>One control scheme for keyboard, touch and gamepad, with a mandatory tutorial before the timer starts.</li>
+          </ul>
+          <div class="tags"><span class="tag">Canvas</span><span class="tag">PWA</span><span class="tag">Web Audio</span><span class="tag">GitHub Actions</span></div>
+          <div class="card-links">
+            <a class="link" href="https://jireh7521.github.io/lighthouse-game/" target="_blank" rel="noopener">Play it
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+            <a class="link muted" href="https://github.com/Jireh7521/lighthouse-game" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-tech="py">
+          <div class="card-top"><span class="lang" data-lang="py">Python</span><span>·</span><span>team of two</span></div>
+          <h3>CampusFlow</h3>
+          <p class="blurb">A support helpdesk for campus staff: priority rules, assignment, follow-up notes and reports,
+            running as both a CLI and a local web app on the standard library.</p>
+          <ul class="points">
+            <li>I owned authentication and persistence: salted PBKDF2-HMAC-SHA256 at 600,000 iterations.</li>
+            <li>Web sessions rotate on sign-in and sign-out, expire after 30 idle minutes, with CSRF tokens and a same-origin CSP.</li>
+            <li>Ticket writes are serialized so two requests can never overwrite each other's changes.</li>
+          </ul>
+          <div class="tags"><span class="tag">Standard library</span><span class="tag">Auth</span><span class="tag">unittest</span><span class="tag">Code review</span></div>
+          <div class="card-links">
+            <a class="link" href="https://github.com/Jireh7521/CampusFlow752_Next" target="_blank" rel="noopener">Source
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+            <a class="link muted" href="https://github.com/Jireh7521/CampusFlow752_Next/tree/main/docs" target="_blank" rel="noopener">Docs</a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-tech="py">
+          <div class="card-top"><span class="lang" data-lang="py">Python · React</span><span>·</span><span>deployed</span></div>
+          <h3>Emergency Resource Map</h3>
+          <p class="blurb">A map-first directory of hospitals, fire services, shelters and IDP camps, with category
+            filters and a "find near me" search built on the browser's geolocation.</p>
+          <ul class="points">
+            <li>FastAPI and PostgreSQL behind Alembic migrations, with admin-only create, edit, delete and verify routes.</li>
+            <li>React front end handling search, clustering and nearby lookup without a page reload.</li>
+            <li>One <code>docker compose up</code> brings up Postgres, the API and an nginx-served front end.</li>
+          </ul>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">Docker</span></div>
+          <div class="card-links">
+            <a class="link" href="https://github.com/Jireh7521/Emergency-Resource-Map" target="_blank" rel="noopener">Source
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+            <a class="link muted" href="https://backend-plum-theta.vercel.app/docs" target="_blank" rel="noopener">Live API</a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-tech="py">
+          <div class="card-top"><span class="lang" data-lang="py">Python</span><span>·</span><span>AI tool</span></div>
+          <h3>Cyber Threat Detection AI</h3>
+          <p class="blurb">Paste firewall, IDS or auth logs and get a streamed analyst first pass: a written threat
+            report, indicators of compromise mapped to MITRE ATT&amp;CK, and a plain-English read.</p>
+          <ul class="points">
+            <li>The model key lives only on the FastAPI server; the browser never sees it.</li>
+            <li>Logs are wrapped as untrusted data so an injection buried in traffic cannot rewrite the instructions.</li>
+            <li>The summary arrives as its own stream event, so risk and confidence cards show real values, not regex guesses.</li>
+          </ul>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">LLM API</span><span class="tag">SSE</span><span class="tag">Prompt security</span></div>
+          <div class="card-links">
+            <a class="link" href="https://github.com/Jireh7521/Cyber-threat-detection-ai-" target="_blank" rel="noopener">Source
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+            <a class="link muted" href="https://github.com/Jireh7521/Cyber-threat-detection-ai-#readme" target="_blank" rel="noopener">How it works</a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-tech="py">
+          <div class="card-top"><span class="lang" data-lang="py">Python</span><span>·</span><span>CLI system</span></div>
+          <h3>Equipment Lending System</h3>
+          <p class="blurb">Tracks the laptops, keyboards and headsets an education programme lends to its fellows:
+            stock, borrow, return, search and reports, all from the terminal.</p>
+          <ul class="points">
+            <li>Validate first, change later: every action is checked before any state moves.</li>
+            <li>Reports and per-fellow holdings are derived from loan records, never cached counts that can drift.</li>
+          </ul>
+          <div class="tags"><span class="tag">Standard library</span><span class="tag">Data modelling</span><span class="tag">Validation</span></div>
+          <div class="card-links">
+            <a class="link" href="https://github.com/Jireh7521/Campus_Resource_Management_System" target="_blank" rel="noopener">Source
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-tech="py">
+          <div class="card-top"><span class="lang" data-lang="py">Python</span><span>·</span><span>game</span></div>
+          <h3>Mystery Island</h3>
+          <p class="blurb">A terminal text adventure: you wake on an island after a storm, the lighthouse is dark and
+            the bridge is rotten. Find the rope and the lantern before your energy runs out.</p>
+          <ul class="points">
+            <li>World map and energy rules modelled first, then played through a unittest suite.</li>
+            <li>Forgiving input: numbers, case and whitespace normalised so a typo never ends the run.</li>
+          </ul>
+          <div class="tags"><span class="tag">Game design</span><span class="tag">State machines</span><span class="tag">unittest</span></div>
+          <div class="card-links">
+            <a class="link" href="https://github.com/Jireh7521/mystery-island" target="_blank" rel="noopener">Source
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="work-note reveal">Also on GitHub: Go katas plus
+        <a href="https://github.com/Jireh7521/Ascii-Web" target="_blank" rel="noopener">Ascii-Web</a>,
+        an ASCII renderer, and small live tools like a
+        <a href="https://task-reminder-wheat.vercel.app" target="_blank" rel="noopener">task reminder</a> and
+        <a href="https://word-counter-black-iota.vercel.app" target="_blank" rel="noopener">word counter</a>.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow">02 / About</p>
+          <h2>Junior by title, careful by habit.</h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p>I started with HTML, CSS and JavaScript, building small browser tools, and kept going into Python and then
+            Go. Today I work across both ends: a canvas game with a service worker on one side, a FastAPI service with
+            migrations and auth on the other.</p>
+          <p>What I enjoy most is the part after the first version works: <strong>finding the race condition, tightening the
+            password hashing, adding the test that would have caught it.</strong> In CampusFlow that meant rotating sessions,
+            CSRF protection and serializing ticket writes. In Lighthouse Hunter it meant a build check that refuses to
+            publish when source and output disagree.</p>
+          <p>I use AI tools as a learning partner, not an oracle. I read what they give me, run it, and test behaviour
+            before it reaches a project, and I have built with LLM APIs myself, including a log analyser that treats
+            incoming text as hostile.</p>
+          <p>I am looking for a junior or internship role where code review is normal and security is not an
+            afterthought. I would rather be told my design is wrong early than ship it twice.</p>
+        </div>
+        <dl class="facts reveal">
+          <div class="fact"><dt>Experience</dt><dd>Under a year of project work, shipping regularly since 2025</dd></div>
+          <div class="fact"><dt>Preferred role</dt><dd>Junior full-stack developer, internship or mentorship</dd></div>
+          <div class="fact"><dt>Availability</dt><dd>Open to full-time and part-time, remote friendly</dd></div>
+          <div class="fact"><dt>Strongest at</dt><dd>Python services, JavaScript front ends, auth and testing</dd></div>
+          <div class="fact"><dt>Learning next</dt><dd>TypeScript, Go services, deeper application security</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow">03 / Toolbox</p>
+          <h2>What I reach for, honestly rated.</h2>
+          <p class="sec-sub">No tool goes on the list because a project mentions it. Comfortable means I have shipped
+            with it and can debug it alone.</p>
+        </div>
+      </div>
+
+      <div class="stack-grid">
+        <div class="panel reveal">
+          <h3>Languages &amp; front end</h3>
+          <p class="hint">// what I write every week</p>
+          <div class="rows">
+            <div class="row"><span>Python</span><span class="level">Comfortable</span></div>
+            <div class="row"><span>JavaScript</span><span class="level">Comfortable</span></div>
+            <div class="row"><span>HTML &amp; CSS</span><span class="level">Comfortable</span></div>
+            <div class="row"><span>React</span><span class="level working">Working</span></div>
+            <div class="row"><span>Go</span><span class="level learning">Learning</span></div>
+            <div class="row"><span>TypeScript</span><span class="level learning">Learning</span></div>
+            <div class="row"><span>Next.js</span><span class="level learning">Exposure</span></div>
+          </div>
+        </div>
+
+        <div class="panel reveal">
+          <h3>Back end, data &amp; infra</h3>
+          <p class="hint">// servers, storage and shipping</p>
+          <div class="rows">
+            <div class="row"><span>FastAPI</span><span class="level">Comfortable</span></div>
+            <div class="row"><span>REST API design</span><span class="level working">Working</span></div>
+            <div class="row"><span>PostgreSQL + Alembic</span><span class="level working">Working</span></div>
+            <div class="row"><span>SQLite &amp; JSON persistence</span><span class="level">Comfortable</span></div>
+            <div class="row"><span>Git &amp; GitHub Actions</span><span class="level">Comfortable</span></div>
+            <div class="row"><span>Docker Compose</span><span class="level working">Working</span></div>
+            <div class="row"><span>Linux shell</span><span class="level working">Working</span></div>
+            <div class="row"><span>Vercel &amp; GitHub Pages</span><span class="level working">Working</span></div>
+          </div>
+        </div>
+
+        <div class="panel reveal">
+          <h3>AI engineering</h3>
+          <p class="hint">// building with models, not around them</p>
+          <div class="rows">
+            <div class="row"><span>LLM APIs &amp; streaming</span><span class="level working">Working</span></div>
+            <div class="row"><span>Prompt engineering</span><span class="level working">Working</span></div>
+            <div class="row"><span>Prompt-injection defence</span><span class="level working">Working</span></div>
+            <div class="row"><span>Structured output parsing</span><span class="level working">Working</span></div>
+            <div class="row"><span>RAG &amp; embeddings</span><span class="level learning">Learning</span></div>
+            <div class="row"><span>Model training</span><span class="level learning">Not yet</span></div>
+          </div>
+        </div>
+
+        <div class="panel reveal">
+          <h3>Craft &amp; security</h3>
+          <p class="hint">// how the work stays trustworthy</p>
+          <div class="rows">
+            <div class="row"><span>Automated tests</span><span class="level">Comfortable</span></div>
+            <div class="row"><span>Password hashing (PBKDF2)</span><span class="level working">Working</span></div>
+            <div class="row"><span>Sessions, CSRF, CSP headers</span><span class="level working">Working</span></div>
+            <div class="row"><span>Input validation</span><span class="level">Comfortable</span></div>
+            <div class="row"><span>Debugging unfamiliar code</span><span class="level working">Working</span></div>
+            <div class="row"><span>Code review (giving &amp; taking)</span><span class="level learning">Developing</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend reveal">
+        <span><span class="level">●</span> Comfortable: shipped and can debug alone</span>
+        <span><span class="level working">●</span> Working: used on a real project</span>
+        <span><span class="level learning">●</span> Learning or exposure</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI -->
+  <section id="ai">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow">04 / Working with AI</p>
+          <h2>Fast with tools, accountable for the code.</h2>
+        </div>
+      </div>
+      <div class="ai-grid">
+        <div class="panel reveal" style="display:flex;flex-direction:column;justify-content:center">
+          <blockquote class="quote">
+            "If I cannot explain a line, it does not go in."
+            <cite>How I review anything a model hands me</cite>
+          </blockquote>
+        </div>
+        <div class="panel reveal">
+          <ol class="checks">
+            <li><span class="num">1</span><div><b>Read it line by line.</b>I trace the data and check the types and edge cases myself.</div></li>
+            <li><span class="num">2</span><div><b>Run it locally.</b>It has to work in my environment, not just in the chat window.</div></li>
+            <li><span class="num">3</span><div><b>Test the behaviour.</b>I add or run tests before accepting the change.</div></li>
+            <li><span class="num">4</span><div><b>Assume input is hostile.</b>Especially model input: logs, prompts and user text get treated as data.</div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATH -->
+  <section id="path">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow">05 / The path</p>
+          <h2>Where this is heading.</h2>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="step reveal">
+          <time>2025</time>
+          <div class="step-body">
+            <h3>First lines of HTML, CSS and JavaScript</h3>
+            <p>Small browser tools, then a Python fundamentals run. My first live deploys went to Vercel.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <time>2026 · H1</time>
+          <div class="step-body">
+            <h3>Python systems, modelled properly</h3>
+            <p>Text adventure, equipment lending, then FastAPI services with Postgres, migrations and Docker. Go exercises alongside.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <time>2026 · H2</time>
+          <div class="step-body">
+            <h3>Team project and real auth</h3>
+            <p>CampusFlow with a teammate: PR reviews, shared issues and ownership of authentication and persistence.</p>
+          </div>
+        </div>
+        <div class="step reveal now">
+          <time>Now</time>
+          <div class="step-body">
+            <h3>Shipping Lighthouse Hunter, learning TypeScript</h3>
+            <p>Polishing the game's art and offline build, building an AI log analyser, and looking for a first junior role.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact reveal">
+        <p class="eyebrow">06 / Contact</p>
+        <h2>Looking for someone who tests their own work?</h2>
+        <p>I am open to internships, junior full-stack roles and mentorship. Send a message and I will reply with code,
+          not just a CV.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" id="contactEmail" href="mailto:" hidden>Email me</a>
+          <a class="btn" href="https://github.com/Jireh7521" target="_blank" rel="noopener">github.com/Jireh7521
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          <a class="btn" id="contactLinkedin" href="#" target="_blank" rel="noopener" hidden>LinkedIn
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year">2026</span> Jireh Ochygole Samuel · built by hand, mostly at night</span>
+    <span><a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- edit these two lines, nothing else ---------- */
+  var CONFIG = {
+    email: "samueljireh752@gmail.com",
+    linkedin: "https://www.linkedin.com/in/samuel-jireh-5172b43aa"
+  };
+
+  var root = document.documentElement;
+
+  /* theme */
+  var themeBtn = document.getElementById("themeBtn");
+  var saved = null;
+  try { saved = localStorage.getItem("sj-theme"); } catch (e) {}
+  root.setAttribute("data-theme", saved === "light" ? "light" : "dark");
+
+  themeBtn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("sj-theme", next); } catch (e) {}
+  });
+
+  /* contact links */
+  if (CONFIG.email) {
+    ["heroEmail", "contactEmail"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.href = "mailto:" + CONFIG.email;
+      el.hidden = false;
+    });
+  }
+  if (CONFIG.linkedin) {
+    var li = document.getElementById("contactLinkedin");
+    li.href = CONFIG.linkedin;
+    li.hidden = false;
+  }
+
+  /* year */
+  document.getElementById("year").textContent = String(new Date().getFullYear());
+
+  /* sticky nav shadow */
+  var nav = document.getElementById("nav");
+  var onScroll = function () {
+    nav.classList.toggle("stuck", window.scrollY > 8);
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* project filter */
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#workGrid .card"));
+
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var want = chip.getAttribute("data-filter");
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
+      cards.forEach(function (card) {
+        var match = want === "all" || card.getAttribute("data-tech") === want;
+        card.hidden = !match;
+      });
+    });
+  });
+
+  /* reveal on scroll */
+  var items = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var idx = items.indexOf(el);
+        el.style.transitionDelay = Math.min(idx % 4, 3) * 60 + "ms";
+        el.classList.add("in");
+        io.unobserve(el);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* scroll spy */
+  var links = Array.prototype.slice.call(document.querySelectorAll("#navLinks a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+
+  if ("IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var idx = sections.indexOf(entry.target);
+        links.forEach(function (a, i) { a.classList.toggle("active", i === idx); });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    sections.forEach(function (s) { if (s) spy.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
