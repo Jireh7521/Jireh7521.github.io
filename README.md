@@ -3,45 +3,32 @@
 A single-file portfolio site. Everything (markup, styles, script) lives in `index.html`, so it
 works from a file:// path, GitHub Pages, Vercel, Netlify or any static host with no build step.
 
-## Before you publish
+## Before you change anything
 
 Open `index.html`, scroll to the bottom, and fill in the two empty strings in `CONFIG`:
 
 ```js
 var CONFIG = {
-  email: "",       // e.g. "samuel@example.com"
-  linkedin: ""     // e.g. "https://linkedin.com/in/samuel-jireh"
+  email: "samueljireh752@gmail.com",
+  linkedin: "https://www.linkedin.com/in/samuel-jireh-5172b43aa"
 };
 ```
 
-Both buttons stay hidden until a value is set, so there is nothing fake on the page while you
-decide. Also check these, which I set from what I could verify:
+Both are filled in with your real email and LinkedIn. If you ever blank one, its button hides
+instead of pointing nowhere. Also check these, which were set from what could be verified:
 
 - `BASED IN` in the hero says **Nigeria · remote**. Change if you prefer a city.
 - `CODING SINCE` says **2025**, based on your earliest repos.
 - Skills marked *Comfortable* mean you have shipped with them and can debug them alone. Move
   anything you would not defend in an interview down to *Working* or *Learning*.
 
-## Publish it free on GitHub Pages
+## Live
 
-1. Create a repository named `Jireh7521.github.io` (your username, exactly).
-2. From this folder:
+Published at **https://jireh7521.github.io** from this repository (`main`, root), served by GitHub
+Pages with the free `github.io` HTTPS certificate.
 
-```bash
-git init
-git add index.html README.md
-git commit -m "Portfolio"
-git branch -M main
-git remote add origin https://github.com/Jireh7521/Jireh7521.github.io.git
-git push -u origin main
-```
-
-3. Settings → Pages → Source: `Deploy from a branch`, branch `main`, folder `/ (root)`.
-4. Live at https://jireh7521.github.io within a minute or two.
-
-Prefer a project repo instead, like `portfolio`? Pages then serves it at
-`https://jireh7521.github.io/portfolio/`. The page uses hash anchors only, so no base-path
-configuration is needed either way.
+To make a change, edit `index.html` here (or clone the repo and push). Pages redeploys within a
+minute. No build step, no Actions workflow.
 
 ## What is on the page
 
